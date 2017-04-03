@@ -28,6 +28,7 @@ public class Connect4 {
             for (i = 0; i <= 1; i++) {
                 board = choice(i, board);
                 print(board);
+                winner = winnerCheck(board, i); 
             }
         }
     }
@@ -44,9 +45,10 @@ public class Connect4 {
 
     public static int[][] choice(int playerID, int[][] board) {
         Scanner stdin = new Scanner(System.in);
-        int playerChoice, columnNum, i, j;
+        int playerChoice, columnNum, i, j, arrayPlayer; 
         System.out.println("Which column to drop piece");
         playerChoice = stdin.nextInt();
+        arrayPlayer = 7 - playerChoice ; 
         columnNum = playerChoice - 1;
         if (playerID == 0) {
             for (i = 0; i <= 6; i++) {
@@ -54,7 +56,7 @@ public class Connect4 {
                     continue;
                 }
                 if ((board[i][columnNum]) != 0) {
-                    board[6 - i][columnNum] = board[6 - i][columnNum] + 10;
+                    board[i-1][columnNum] = 10;
                 }
             }
         }
@@ -64,12 +66,14 @@ public class Connect4 {
                     continue;
                 }
                 if ((board[j][columnNum]) != 0) {
-                    board[j][columnNum] = board[j][columnNum] + 100;
+                    board[j-1][columnNum] = 100;
                 }
             }
         }
         return board;
     }
     //maybe have another method to check for winner 
-
+public static int winnerCheck(int[][] board, int i){
+    
+}
 }
